@@ -1,0 +1,37 @@
+Input taken -
+
+No of Cache Lines (cl)
+Block Size (b)
+No of bits in the address (N)
+Mapping to be implemented (typ)
+Number of queries (q)
+Instruction Type (q1)
+Address (adrs)
+Value of N in N- Way Mapping (k)
+
+Assumptions and Working -
+
+My code assumes that all the blocks have data None in them from Main Memory.A defaultdict in python has been used to implement this.
+Initially, the cache is empty. There is no data in any of the cache lines.
+Whenever we use a write query, the None value gets overwritten with it. 
+The entire cache is being printed after each query. If the value of a word in a block is None, I have printed "Main Memory Data" there.
+
+1) In Direct Mapping, the cache line where the given address goes has been calculated. If the given address block is already there, then we get a cache hit.
+   If it's not there, but it is empty, then the address has been inserted there. If it is a write query, the given Data is also updated.
+   If there is another block present there, then that block has been replaced with the given block.
+
+2) In Fully Associative Mapping, every line is searched to find the data. If present, we get a cache hit. Else, a miss.
+   If we find an empty line, we insert the data there.
+   Else, the LRU policy has been used to replace the least recently updated block with the current block.
+   In case of a write query, the data of the given word is updated.
+
+3) In N-way Set Associative Mapping, we first find the number of sets and which set the given address would belong to.
+   We search the entire set, if we find the block then we get a cache hit.
+   Else, we search for an empty line in the set. If found, we insert the address there.
+   Otherwise, the LRU policy has been used to replace the least recently updated block in that set with the current block.
+   In case of a write query, the data of the given word is updated.
+
+
+
+
+
